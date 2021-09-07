@@ -36,5 +36,12 @@ module.exports = {
             if (!movie) return res.status(404).json();
             res.json(movie);
         });
+    },
+
+    deleteOne: function (req, res) {
+        Movie.findOneAndRemove({_id: req.params.id}, function (err) {
+            if (err) return res.status(400).json(err);
+            res.json();
+        });
     }
 };
