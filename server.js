@@ -27,6 +27,7 @@ app.delete('/actors/:id', actors.deleteOne);
 app.delete('/actors/:id/movies', actors.deleteOneWithMovies);
 app.delete('/actors/:aId/:mId', actors.deleteMovieFromActor);
 
+app.get('/movies/betweenYear', movies.betweenYear);
 app.get('/movies', movies.getAll);
 app.post('/movies', movies.createOne);
 app.get('/movies/:id', movies.getOne);

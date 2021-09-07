@@ -91,5 +91,15 @@ module.exports = {
                 });
             });
         });
+    },
+
+    betweenYear: function (req, res) {
+        let year1 = req.body.year1;
+        let year2 = req.body.year2;
+
+        if (year1 <= year2) return res.json("year1 should be greater than year2");
+        Movie.where('year').gte(year2).lte(year1).exec(function (err, docs) {
+            res.json(docs);
+        });
     }
 };
