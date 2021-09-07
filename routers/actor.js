@@ -50,7 +50,7 @@ module.exports = {
     deleteOne: function (req, res) {
         Actor.findOneAndRemove({_id: req.params.id}, function (err) {
             if (err) return res.status(400).json(err);
-            res.json();
+            res.json("Deleted");
         });
     },
 

@@ -43,7 +43,7 @@ module.exports = {
     deleteOne: function (req, res) {
         Movie.findOneAndRemove({_id: req.params.id}, function (err) {
             if (err) return res.status(400).json(err);
-            res.json();
+            res.json("Deleted");
         });
     },
 
@@ -113,7 +113,6 @@ module.exports = {
         Movie.deleteMany().where('year').gte(year2).lte(year1).exec(function (err, docs) {
             if (err) return res.status(400).json(err);
             if (!docs) return res.status(404).json();
-
                 res.json("Deleted");
         });
     }
