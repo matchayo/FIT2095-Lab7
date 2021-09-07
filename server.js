@@ -24,6 +24,7 @@ app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:id/movies', actors.addMovie);
 app.delete('/actors/:id', actors.deleteOne);
+app.delete('/actors/:id/movies', actors.deleteOneWithMovies);
 
 app.get('/movies', movies.getAll);
 app.post('/movies', movies.createOne);

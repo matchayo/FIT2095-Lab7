@@ -67,5 +67,26 @@ module.exports = {
                 });
             });
         });
+    },
+
+    deleteOneWithMovies: function (req, res) {
+        
+        Actor.findOne({_id: req.params.id}, function (err, actor) {
+            if (err) return res.status(400).json(err);
+            if (!actor) return res.status(404).json();
+
+            Movie.deleteMany({"_id": actor.movies}, function (err, movie) {
+                if (err) return res.status(400).json(err);
+                if (!movie) return res.status(404).json();
+
+                console.log("Movies deleted");
+            });
+        });
+
+        Actor.findByIdAndDelete(req.params.id, function (err, docs) {
+            if (err) return res.status(400).json(err);
+            console.log(docs);
+            res.json("Actor deleted");
+        });
     }
 };
