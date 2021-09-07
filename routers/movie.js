@@ -73,5 +73,23 @@ module.exports = {
                 });
             });
         });
+    },
+
+    addActor: function (req, res) {
+        Movie.findOne({_id: req.params.id}, function (err, movie) {
+            if (err) return res.status(400).json(err);
+            if (!movie) return res.status(404).json();
+
+            Actor.findOne({_id: req.body.id}, function (err, actor) {
+                if (err) return res.status(400).json(err);
+                if (!actor) return res.status(404).json();
+
+                movie.actors.push(actor._id);
+                movie.save(function (err) {
+                    if (err) return res.status(500).json(err);
+                    res.json(movie);
+                });
+            });
+        });
     }
 };

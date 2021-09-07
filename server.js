@@ -9,7 +9,7 @@ const app = express();
 app.listen(8080);
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
 mongoose.connect("mongodb://localhost:27017/FIT2095_Lab7", function (err) {
     if (err) {
@@ -33,3 +33,4 @@ app.get('/movies/:id', movies.getOne);
 app.put('/movies/:id', movies.updateOne);
 app.delete('/movies/:id', movies.deleteOne);
 app.delete('/movies/:mId/:aId', movies.deleteActorFromMovie);
+app.post('/movies/:id', movies.addActor);
