@@ -23,16 +23,19 @@ app.post('/actors', actors.createOne);
 app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:id/movies', actors.addMovie);
+
 app.delete('/actors/:id', actors.deleteOne);
 app.delete('/actors/:id/movies', actors.deleteOneWithMovies);
 app.delete('/actors/:aId/:mId', actors.deleteMovieFromActor);
 
 app.get('/movies/betweenYear', movies.findBetweenYear);
 app.delete('/movies/betweenYear', movies.deleteBetweenYear);
+
 app.get('/movies', movies.getAll);
 app.post('/movies', movies.createOne);
 app.get('/movies/:id', movies.getOne);
 app.put('/movies/:id', movies.updateOne);
 app.delete('/movies/:id', movies.deleteOne);
+
 app.delete('/movies/:mId/:aId', movies.deleteActorFromMovie);
 app.post('/movies/:id', movies.addActor);
