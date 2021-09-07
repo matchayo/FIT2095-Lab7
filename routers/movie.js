@@ -95,13 +95,26 @@ module.exports = {
         });
     },
 
-    betweenYear: function (req, res) {
+    findBetweenYear: function (req, res) {
         let year1 = req.body.year1;
         let year2 = req.body.year2;
 
         if (year1 <= year2) return res.json("year1 should be greater than year2");
         Movie.where('year').gte(year2).lte(year1).exec(function (err, docs) {
             res.json(docs);
+        });
+    },
+
+    deleteBetweenYear: function (req, res) {
+        let year1 = req.body.year1;
+        let year2 = req.body.year2;
+
+        if (year1 <= year2) return res.json("year1 should be greater than year2");
+        Movie.deleteMany().where('year').gte(year2).lte(year1).exec(function (err, docs) {
+            if (err) return res.status(400).json(err);
+            if (!docs) return res.status(404).json();
+
+                res.json("Deleted");
         });
     }
 };
