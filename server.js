@@ -18,6 +18,9 @@ mongoose.connect("mongodb://localhost:27017/FIT2095_Lab7", function (err) {
     console.log("Connect Successfully");
 });
 
+// Extra task
+app.put('/actors/inc', actors.updateBirthYear);
+
 app.get('/actors', actors.getAll);
 app.post('/actors', actors.createOne);
 app.get('/actors/:id', actors.getOne);
@@ -38,4 +41,4 @@ app.put('/movies/:id', movies.updateOne);
 app.delete('/movies/:id', movies.deleteOne);
 
 app.delete('/movies/:mId/:aId', movies.deleteActorFromMovie);
-app.post('/movies/:id', movies.addActor);
+app.post('/movies/:id/actors', movies.addActor);

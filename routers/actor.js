@@ -19,7 +19,6 @@ module.exports = {
 
     createOne: function (req, res) {
         let newActorDetails = req.body;
-        newActorDetails._id = new mongoose.Types.ObjectId();
 
         let actor = new Actor(newActorDetails);
         actor.save(function (err) {
@@ -120,6 +119,15 @@ module.exports = {
                     res.json(actor);
                 });
             });
+        });
+    },
+
+    updateBirthYear: function (req, res) {
+        Actor.updateMany({"name": /^M/ }, {$inc: {"bYear": 10}}, function (err, actors) {
+            if (err) return res.status(400).json(err);
+            if (!actors) return res.status(404).json();
+
+            res.json(actors);
         });
     }
 };
