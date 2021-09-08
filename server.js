@@ -19,7 +19,7 @@ mongoose.connect("mongodb://localhost:27017/FIT2095_Lab7", function (err) {
 });
 
 // Extra task
-app.put('/actors/e/inc', actors.updateBirthYear);
+app.put('/actors/inc', actors.updateBirthYear);
 
 app.get('/actors', actors.getAll);
 app.post('/actors', actors.createOne);
